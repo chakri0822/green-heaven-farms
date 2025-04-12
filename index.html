@@ -6,79 +6,150 @@
     <title>Green Heaven Farms</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Slideshow container */
-        .slideshow-container {
-            max-width: 100%;
-            position: relative;
-            margin: auto;
+        /* General Styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        /* Navigation Bar */
+        header {
+            background-color: #2a7f2d;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        /* Slides */
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        header nav ul li {
+            margin-left: 30px;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        header nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        #hero {
+            background: url('your-high-quality-hero-image.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        #hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        #hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        /* Slideshow Section */
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: 40px auto;
+        }
+
         .mySlides {
             display: none;
             width: 100%;
             height: auto;
         }
 
-        /* Fade animation */
-        .fade {
-            animation-name: fade;
-            animation-duration: 1.5s;
+        /* Solutions Section */
+        #solutions {
+            background-color: #f4f4f4;
+            padding: 50px 20px;
+            text-align: center;
         }
 
-        @keyframes fade {
-            from { opacity: 0.4; } 
-            to { opacity: 1; }
+        #solutions .container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        /* Next & previous buttons */
-        .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: auto;
-            padding: 16px;
-            margin-top: -22px;
+        #solutions .solution-item {
+            display: inline-block;
+            width: 30%;
+            margin: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Interactive Farming Tips */
+        #ai-tips {
+            background-color: #007bff;
             color: white;
-            font-weight: bold;
-            font-size: 18px;
-            transition: 0.6s ease;
-            border-radius: 0 3px 3px 0;
-            user-select: none;
+            padding: 50px 20px;
+            text-align: center;
         }
 
-        .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
+        #ai-tips input {
+            padding: 10px;
+            width: 50%;
+            margin: 20px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
         }
 
-        .prev:hover, .next:hover {
-            background-color: rgba(0,0,0,0.8);
+        #ai-tips button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
         }
 
-        /* Social media icons */
-        .social-icons {
-            margin-top: 10px;
-        }
-
-        .social-icons a {
-            margin-right: 10px;
-            text-decoration: none;
-            font-size: 20px;
-            color: #333;
-        }
-
-        .social-icons a:hover {
-            color: #007bff;
+        /* Footer Section */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
         }
     </style>
 </head>
 <body>
+
     <!-- Header Section -->
     <header>
         <div class="container">
             <img src="logo.png" alt="Green Heaven Farms Logo" style="max-height: 80px;">
-            <h1>Green Heaven Farms</h1>
             <nav>
                 <ul>
                     <li><a href="#about">About Us</a></li>
@@ -93,11 +164,9 @@
 
     <!-- Hero Section -->
     <section id="hero">
-        <div class="hero-content">
-            <h2>Revolutionizing Agriculture for a Sustainable Future</h2>
-            <p>Discover innovative vertical farming techniques that save space and conserve water.</p>
-            <a href="#about" class="btn">Learn More</a>
-        </div>
+        <h2>Revolutionizing Agriculture for a Sustainable Future</h2>
+        <p>Discover innovative vertical farming techniques that save space and conserve water.</p>
+        <a href="#about" class="btn">Learn More</a>
     </section>
 
     <!-- Slideshow Section -->
@@ -105,40 +174,7 @@
         <img class="mySlides fade" src="farm1.jpg" alt="Vertical farming" style="width:100%">
         <img class="mySlides fade" src="farm2.jpg" alt="Hydroponics setup" style="width:100%">
         <img class="mySlides fade" src="farm3.jpg" alt="Fresh produce" style="width:100%">
-
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
-
-    <script>
-        let slideIndex = 0;
-        showSlides();
-
-        function showSlides() {
-            let slides = document.getElementsByClassName("mySlides");
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slideIndex++;
-            if (slideIndex > slides.length) { slideIndex = 1; }
-            slides[slideIndex - 1].style.display = "block";
-            setTimeout(showSlides, 3000); // Change image every 3 seconds
-        }
-
-        function plusSlides(n) {
-            slideIndex += n - 1;
-            showSlides();
-        }
-    </script>
-
-    <!-- About Us Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2>About Us</h2>
-            <p>At Green Heaven Farms, we are committed to transforming traditional farming through vertical farming and hydroponics. Our mission is to conserve water and maximize crop yields while promoting sustainable practices.</p>
-            <p>With innovative irrigation methods like drip systems and rainwater harvesting, we address water conservation challenges posed by climate change and groundwater depletion.</p>
-        </div>
-    </section>
 
     <!-- Our Solutions Section -->
     <section id="solutions" class="section">
@@ -159,57 +195,44 @@
         </div>
     </section>
 
-    <!-- Products & Services Section -->
-    <section id="products" class="section">
-        <div class="container">
-            <h2>Products & Services</h2>
-            <p>We grow a variety of fresh, high-quality crops using sustainable vertical farming methods. Our food processing services ensure quality and freshness in every product.</p>
-        </div>
-    </section>
-
-    <!-- Sustainability Section -->
-    <section id="sustainability" class="section">
-        <div class="container">
-            <h2>Sustainability</h2>
-            <p>Our commitment to sustainability goes beyond farming. We implement eco-friendly initiatives to reduce our carbon footprint and promote long-term agricultural sustainability.</p>
-        </div>
-    </section>
-
-    <!-- Contact Us Section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <form action="#" method="POST">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
-
-                <button type="submit" class="btn">Submit</button>
-            </form>
-
-            <!-- Contact Information -->
-            <h3>Reach Us At:</h3>
-            <p>Email: <a href="mailto:chakrireddynibbaragandla@gmail.com">chakrireddynibbaragandla@gmail.com</a></p>
-
-            <!-- Social Media Links -->
-            <div class="social-icons">
-                <a href="#" title="Facebook" target="_blank">Facebook</a>
-                <a href="#" title="Instagram" target="_blank">Instagram</a>
-                <a href="#" title="LinkedIn" target="_blank">LinkedIn</a>
-            </div>
-        </div>
+    <!-- AI Farming Tips Section -->
+    <section id="ai-tips">
+        <h2>Get AI-Powered Farming Tips</h2>
+        <p>Ask anything about sustainable farming, and our AI will give you the best advice.</p>
+        <input type="text" id="ai-query" placeholder="Ask your farming question...">
+        <button onclick="getFarmingTip()">Ask</button>
     </section>
 
     <!-- Footer Section -->
     <footer>
-        <div class="container">
-            <p>Venture Code: VEN-GREE-3472 | &copy; 2025 Green Heaven Farms. All Rights Reserved.</p>
-        </div>
+        <p>Venture Code: VEN-GREE-3472 | &copy; 2025 Green Heaven Farms. All Rights Reserved.</p>
     </footer>
+
+    <script>
+        // Slideshow functionality
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("mySlides");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1; }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 3000);
+        }
+
+        // AI-powered farming tips (placeholder functionality)
+        function getFarmingTip() {
+            const query = document.getElementById("ai-query").value;
+            if (query) {
+                alert("AI Response: " + query + " – Here’s how we can help with this.");
+            }
+        }
+    </script>
+
 </body>
 </html>
+
